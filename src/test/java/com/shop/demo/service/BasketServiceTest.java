@@ -1,5 +1,6 @@
 package com.shop.demo.service;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.shop.demo.exception.OverWeightBasketException;
@@ -40,6 +41,8 @@ public class BasketServiceTest {
         basketService.addItem(oranges1kg);
         basketService.addItem(cucumber500g);
         basketService.addItem(carrot500g);
+
+        assertEquals(basketService.getItemCount(), 4);
 
     }
    
