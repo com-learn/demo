@@ -47,7 +47,7 @@ public class BasketServiceTest {
     }
    
     @Test
-    void test_AddProhibitedItem_throwsExeption() throws ProhibitedItemException, OverWeightBasketException {
+    void test_AddProhibitedItem_throwsExeption() {
         Item appleIphone =
             Item.of(1l, "Apple iPhone 12", "Best iPhone Yet", ItemType.ELECTRONICS, 180);
 
@@ -55,7 +55,7 @@ public class BasketServiceTest {
     }
 
     @Test
-    void test_AddItems_GreaterThanMaxCapacity_throwsExeption() throws ProhibitedItemException, OverWeightBasketException {
+    void test_AddItems_GreaterThanMaxCapacity_throwsExeption() {
         Item apples3kg =
             Item.of(1l, "Apple", "Green Apples", ItemType.FRUIT, 3000);
         Item carrot500g =
@@ -66,7 +66,7 @@ public class BasketServiceTest {
         Item carrot4kg =
             Item.of(4l, "Carrot", "Ooty Carrot", ItemType.VEG, 4000);
 
-        assertThrows(OverWeightBasketException.class, () -> basketService.addItem(carrot4kg) );
+        assertThrows(OverWeightBasketException.class, () -> {basketService.clearItems(); basketService.addItem(carrot4kg);} );
 
 
     }
