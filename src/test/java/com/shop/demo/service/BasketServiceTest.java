@@ -57,12 +57,12 @@ public class BasketServiceTest {
             Item.of(1l, "Apple", "Green Apples", ItemType.FRUIT, 3000);
         Item carrot500g =
             Item.of(3l, "Carrot", "Ooty Carrot", ItemType.VEG, 500);
+                
+        assertThrows(OverWeightBasketException.class, () -> { basketService.addItem(apples3kg); basketService.addItem(carrot500g);} );
+        
         Item carrot4kg =
             Item.of(4l, "Carrot", "Ooty Carrot", ItemType.VEG, 4000);
-        
-        assertThrows(OverWeightBasketException.class, () -> { basketService.addItem(apples3kg); basketService.addItem(carrot500g);} );
 
-        basketService.clearItems();
         assertThrows(OverWeightBasketException.class, () -> basketService.addItem(carrot4kg) );
 
 
